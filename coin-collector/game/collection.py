@@ -1,15 +1,16 @@
 """
-collection: figures out which coins the player has collected this frame.
+collection: figures out which coins the player collects this frame.
 """
 
 
 def check_collection(player, coins):
     """
-    Returns the list of coins the player is currently overlapping.
+    Returns newly collected coins and marks them unavailable for later frames.
     """
     player_rect = player.get_rect()
     collected = []
     for coin in coins:
-        if player_rect.colliderect(coin.get_rect()):
+        if not coin.collected and player_rect.colliderect(coin.get_rect()):
+            coin.collected = True
             collected.append(coin)
     return collected

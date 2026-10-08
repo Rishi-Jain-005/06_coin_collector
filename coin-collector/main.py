@@ -25,6 +25,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            else:
+                engine.handle_event(event)
 
         keys = pygame.key.get_pressed()
         engine.handle_input(keys)
